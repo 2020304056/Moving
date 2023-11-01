@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Cartelera"
+                android:text="홈페이지"
                 android:textColor="@color/white"/>
 
         </androidx.cardview.widget.CardView>
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Populares"
+                android:text="최신 영화 DB"
                 android:textColor="@color/white"/>
 
         </androidx.cardview.widget.CardView>
