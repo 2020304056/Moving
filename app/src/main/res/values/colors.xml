@@ -7,4 +7,7 @@
     <color name="rojo_200">#F44336</color>
     <color name="blanco_200">#CCFFFFFF</color>
     <color name="azul_200">#3F51B5</color>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#FF5252</color>
 </resources>
