@@ -10,4 +10,5 @@
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF5252</color>
+    <color name="login_blue">#1F63AA</color>
 </resources>
