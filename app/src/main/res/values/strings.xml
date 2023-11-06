@@ -6,6 +6,8 @@
     <string name="toprated">Top Rated 평점</string>
     <string name="most_toprated">최고 평점 영화</string>
     <string name="upcoming">Upcoming</string>
+    <string name="most_popular_tv">가장 인기있는 TV</string>
+    <string name="most_toprated_tv">최고 평점 TV</string>
     <string name="now_playing">Now Playing</string>
     <string name="discover">Discover</string>
     <string name="error_fetch_movies">Please check yout internet connection</string>
