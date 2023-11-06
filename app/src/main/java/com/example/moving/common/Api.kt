@@ -65,4 +65,44 @@ interface Api {
         @Query("language")
         language : String = "ko,en-US"
     ): Call<GetTVResponse>
+
+    @GET("tv/top_rated")
+    fun getTopRatedTV(
+        @Query("api_key")
+        apiKey: String = "9897e125444076b7172d70bff4fe9c5d",
+        @Query("page")
+        page : Int,
+        @Query("language")
+        language : String = "ko,en-US"
+    ): Call<GetTVResponse>
+
+    @GET("tv/on_the_air")
+    fun getOnTheAirTV(
+        @Query("api_key")
+        apiKey: String = "9897e125444076b7172d70bff4fe9c5d",
+        @Query("page")
+        page : Int,
+        @Query("language")
+        language : String = "ko,en-US"
+    ): Call<GetTVResponse>
+
+    @GET("tv/airing_today")
+    fun getAiringTodayTV(
+        @Query("api_key")
+        apiKey: String = "9897e125444076b7172d70bff4fe9c5d",
+        @Query("page")
+        page : Int,
+        @Query("language")
+        language : String = "ko,en-US"
+    ): Call<GetTVResponse>
+
+    @GET("discover/tv")
+    fun getDiscoverTV(
+        @Query("api_key")
+        apiKey: String = "9897e125444076b7172d70bff4fe9c5d",
+        @Query("page")
+        page : Int,
+        @Query("language")
+        language : String = "ko,en-US"
+    ): Call<GetTVResponse>
 }

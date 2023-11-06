@@ -8,6 +8,9 @@
     <string name="upcoming">Upcoming</string>
     <string name="most_popular_tv">가장 인기있는 TV</string>
     <string name="most_toprated_tv">최고 평점 TV</string>
+    <string name="on_the_air">On The Air</string>
+    <string name="airing_today">Airing Today</string>
+    <string name="title_home">TV</string>
     <string name="now_playing">Now Playing</string>
     <string name="discover">Discover</string>
     <string name="error_fetch_movies">Please check yout internet connection</string>
@@ -98,7 +101,7 @@
     <string name="noti_title">연락처 알림</string>
     <string name="noti_message">에게 연락을 할 시간입니다.</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_home2">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_main">MainActivity</string>

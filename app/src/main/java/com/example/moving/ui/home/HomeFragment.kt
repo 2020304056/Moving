@@ -20,7 +20,6 @@ import com.example.moving.databinding.FragmentHomeBinding
 import com.example.moving.detail.MovieDetailsActivity
 
 class HomeFragment : Fragment() {
-
     lateinit var root : View
 
     private lateinit var popularTV: RecyclerView
@@ -28,8 +27,29 @@ class HomeFragment : Fragment() {
     private lateinit var popularTVLayoutMgr: LinearLayoutManager
     private var popularTVPage = 1
 
+    private lateinit var topRatedTV: RecyclerView
+    private lateinit var topRatedTVAdapter: TVAdapter
+    private lateinit var topRatedTVLayoutMgr: LinearLayoutManager
+    private var topRatedTVPage = 1
+
+    private lateinit var onTheAirTV: RecyclerView
+    private lateinit var onTheAirTVAdapter: TVAdapter
+    private lateinit var onTheAirTVLayoutMgr: LinearLayoutManager
+    private var onTheAirTVPage = 1
+
+    private lateinit var airingTodayTV: RecyclerView
+    private lateinit var airingTodayTVAdapter: TVAdapter
+    private lateinit var airingTodayTVLayoutMgr: LinearLayoutManager
+    private var airingTodayTVPage = 1
+
+    private lateinit var discoverTV: RecyclerView
+    private lateinit var discoverTVAdapter: TVAdapter
+    private lateinit var discoverTVLayoutMgr: LinearLayoutManager
+    private var discoverTVPage = 1
+
+
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
-                               savedInstanceState: Bundle?): View? {
+                               savedInstanceState: Bundle? ): View? {
 
         root = inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -43,8 +63,60 @@ class HomeFragment : Fragment() {
         popularTVAdapter = TVAdapter(mutableListOf()) { tv -> showTVDetails(tv) }
         popularTV.adapter = popularTVAdapter
 
-
         getPopularTV()
+
+
+        topRatedTV = root.findViewById(R.id.top_rated_tv)
+        topRatedTVLayoutMgr = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        topRatedTV.layoutManager = topRatedTVLayoutMgr
+        topRatedTVAdapter = TVAdapter(mutableListOf()) { tv -> showTVDetails(tv) }
+        topRatedTV.adapter = topRatedTVAdapter
+
+        getTopRatedTV()
+
+
+        onTheAirTV = root.findViewById(R.id.on_the_air_tv)
+        onTheAirTVLayoutMgr = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        onTheAirTV.layoutManager = onTheAirTVLayoutMgr
+        onTheAirTVAdapter = TVAdapter(mutableListOf()) { tv -> showTVDetails(tv) }
+        onTheAirTV.adapter = onTheAirTVAdapter
+
+        getOnTheAirTV()
+
+
+        airingTodayTV = root.findViewById(R.id.airing_today_tv)
+        airingTodayTVLayoutMgr = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        airingTodayTV.layoutManager = airingTodayTVLayoutMgr
+        airingTodayTVAdapter = TVAdapter(mutableListOf()) { tv -> showTVDetails(tv) }
+        airingTodayTV.adapter = airingTodayTVAdapter
+
+        getAiringTodayTV()
+
+
+        discoverTV = root.findViewById(R.id.discover_tv)
+        discoverTVLayoutMgr = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        discoverTV.layoutManager = discoverTVLayoutMgr
+        discoverTVAdapter = TVAdapter(mutableListOf()) { tv -> showTVDetails(tv) }
+        discoverTV.adapter = discoverTVAdapter
+
+        getDiscoverTV()
+
 
         return root
     }
@@ -74,6 +146,123 @@ class HomeFragment : Fragment() {
                     popularTV.removeOnScrollListener(this)
                     popularTVPage++
                     getPopularTV()
+                }
+            }
+        })
+    }
+
+    private fun getTopRatedTV() {
+        TVRepository.getTopRatedTV(
+            topRatedTVPage,
+            ::onTopRatedTVFetched,
+            ::onError
+        )
+    }
+
+    private fun onTopRatedTVFetched(tvlist: List<TV>) {
+        topRatedTVAdapter.appendTV(tvlist)
+        attachTopRatedTVOnScrollListener()
+    }
+
+    private fun attachTopRatedTVOnScrollListener() {
+        topRatedTV.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val totalItemCount = topRatedTVLayoutMgr.itemCount
+                val visibleItemCount = topRatedTVLayoutMgr.childCount
+                val firstVisibleItem = topRatedTVLayoutMgr.findFirstVisibleItemPosition()
+
+                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
+                    topRatedTV.removeOnScrollListener(this)
+                    topRatedTVPage++
+                    getTopRatedTV()
+                }
+            }
+        })
+    }
+
+    private fun getOnTheAirTV() {
+        TVRepository.getOnTheAirTV(
+            onTheAirTVPage,
+            ::onOnTheAirTVFetched,
+            ::onError
+        )
+    }
+
+    private fun onOnTheAirTVFetched(tvlist: List<TV>) {
+        onTheAirTVAdapter.appendTV(tvlist)
+        attachOnTheAirTVOnScrollListener()
+    }
+
+    private fun attachOnTheAirTVOnScrollListener() {
+        onTheAirTV.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val totalItemCount = onTheAirTVLayoutMgr.itemCount
+                val visibleItemCount = onTheAirTVLayoutMgr.childCount
+                val firstVisibleItem = onTheAirTVLayoutMgr.findFirstVisibleItemPosition()
+
+                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
+                    onTheAirTV.removeOnScrollListener(this)
+                    onTheAirTVPage++
+                    getOnTheAirTV()
+                }
+            }
+        })
+    }
+
+
+    private fun getAiringTodayTV() {
+        TVRepository.getAiringTodayTV(
+            airingTodayTVPage,
+            ::onAiringTodayTVFetched,
+            ::onError
+        )
+    }
+
+    private fun onAiringTodayTVFetched(tvlist: List<TV>) {
+        airingTodayTVAdapter.appendTV(tvlist)
+        attachAiringTodayTVOnScrollListener()
+    }
+
+    private fun attachAiringTodayTVOnScrollListener() {
+        airingTodayTV.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val totalItemCount = airingTodayTVLayoutMgr.itemCount
+                val visibleItemCount = airingTodayTVLayoutMgr.childCount
+                val firstVisibleItem = airingTodayTVLayoutMgr.findFirstVisibleItemPosition()
+
+                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
+                    airingTodayTV.removeOnScrollListener(this)
+                    airingTodayTVPage++
+                    getAiringTodayTV()
+                }
+            }
+        })
+    }
+
+    private fun getDiscoverTV() {
+        TVRepository.getDiscoverTV(
+            discoverTVPage,
+            ::onDiscoverTVFetched,
+            ::onError
+        )
+    }
+
+    private fun onDiscoverTVFetched(tvlist: List<TV>) {
+        discoverTVAdapter.appendTV(tvlist)
+        attachDiscoverTVOnScrollListener()
+    }
+
+    private fun attachDiscoverTVOnScrollListener() {
+        discoverTV.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val totalItemCount = discoverTVLayoutMgr.itemCount
+                val visibleItemCount = discoverTVLayoutMgr.childCount
+                val firstVisibleItem = discoverTVLayoutMgr.findFirstVisibleItemPosition()
+
+                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
+                    discoverTV.removeOnScrollListener(this)
+                    discoverTVPage++
+                    getDiscoverTV()
                 }
             }
         })
