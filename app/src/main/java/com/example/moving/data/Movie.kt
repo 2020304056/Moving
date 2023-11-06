@@ -1,4 +1,4 @@
-package com.example.moving
+package com.example.moving.data
 
 import com.google.gson.annotations.SerializedName
 

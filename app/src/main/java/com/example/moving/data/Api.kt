@@ -1,4 +1,4 @@
-package com.example.moving
+package com.example.moving.data
 
 import retrofit2.Call
 import retrofit2.http.GET

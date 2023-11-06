@@ -1,4 +1,4 @@
-package com.example.moving
+package com.example.moving.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,17 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moving.detail.MOVIE_BACKDROP
+import com.example.moving.detail.MOVIE_OVERVIEW
+import com.example.moving.detail.MOVIE_POSTER
+import com.example.moving.detail.MOVIE_RATING
+import com.example.moving.detail.MOVIE_RELEASE_DATE
+import com.example.moving.detail.MOVIE_TITLE
+import com.example.moving.data.Movie
+import com.example.moving.detail.MovieDetailsActivity
+import com.example.moving.data.MoviesAdapter
+import com.example.moving.data.MoviesRepository
+import com.example.moving.R
 
 class MainActivity : AppCompatActivity() {
 
