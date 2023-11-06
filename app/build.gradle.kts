@@ -66,6 +66,9 @@ dependencies {
     // Glide
     // https://github.com/bumptech/glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
     kapt("com.github.bumptech.glide:compiler:4.10.0")
 
     // Testing

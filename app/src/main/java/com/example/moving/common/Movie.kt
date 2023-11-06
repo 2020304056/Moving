@@ -1,20 +1,24 @@
-package com.example.moving.data
+package com.example.moving.common
 
 import com.google.gson.annotations.SerializedName
 
 data class Movie(
     @SerializedName("id")
-    val id: Long,
+    val id : Long,
     @SerializedName("title")
-    val title: String,
+    val title : String,
     @SerializedName("overview")
-    val overview: String,
+    val overview : String,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val poster_path: String,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdrop_path: String,
     @SerializedName("vote_average")
     val rating: Float,
+    @SerializedName("vote_count")
+    val vcount: Long,
     @SerializedName("release_date")
-    val releaseDate: String
+    val releaseDate: String,
+    @SerializedName("popularity")
+    val prating: Float
 )
