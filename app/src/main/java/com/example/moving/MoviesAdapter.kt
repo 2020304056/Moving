@@ -45,4 +45,8 @@ class MoviesAdapter (var movies: MutableList<Movie>, var onMovieClick: (movie: M
             movies.size - 1
         )
     }
+
+    fun removeMovies(movies: List<Movie>) {
+        this.movies.removeAll(movies)
+    }
 }

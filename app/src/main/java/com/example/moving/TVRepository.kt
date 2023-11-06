@@ -154,4 +154,31 @@ object TVRepository {
                 }
             })
     }
+
+    fun getSearchTV(page: Int = 1, query: String,
+                    onSuccess: (tvlist: List<TV>) -> Unit,
+                    onError: () -> Unit){
+        api.getSearchTV(page = page, query = query)
+            .enqueue(object : Callback<GetTVResponse> {
+                override fun onResponse(
+                    call: Call<GetTVResponse>,
+                    response: Response<GetTVResponse>
+                ) {
+                    if(response.isSuccessful) {
+                        val responseBody = response.body()
+                        if(responseBody != null) {
+                            onSuccess.invoke(responseBody.tvlist)
+                        } else {
+                            onError.invoke()
+                        }
+                    } else {
+                        onError.invoke()
+                    }
+                }
+
+                override fun onFailure(call: Call<GetTVResponse>, t: Throwable) {
+                    onError.invoke()
+                }
+            })
+    }
 }

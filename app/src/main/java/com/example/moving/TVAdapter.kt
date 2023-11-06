@@ -44,4 +44,8 @@ class TVAdapter (var tvlist: MutableList<TV>, var onTVClick: (tv: TV) -> Unit
             tvlist.size - 1
         )
     }
+
+    fun removeTV(tvlist: List<TV>) {
+        this.tvlist.removeAll(tvlist)
+    }
 }
